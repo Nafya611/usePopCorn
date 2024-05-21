@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
-const key = "e8e1da1c5dc8da38bbec8ad3feac87ce";
+//const key = "e8e1da1c5dc8da38bbec8ad3feac87ce";
+const key = "2713f0c1";
 
 // const tempMovieData = [
 //   {
@@ -62,15 +63,16 @@ export default function App() {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&`
+          // `https://api.themoviedb.org/3/discover/movie?api_key=${key}&`
+          `http://www.omdbapi.com/?apikey=${key}&s=interstellar`
         );
 
         if (!res.ok) {
           throw new Error("smt went wrong  with fetching movies");
         }
         const data = await res.json();
-        setMovies(data.results);
-        setWatched(data.results);
+        setMovies(data.Search);
+        setWatched([]);
       } catch (err) {
         setError(err.message);
         console.log(err.message);
@@ -152,7 +154,7 @@ function MovieList({ movies }) {
   return (
     <ul className="list">
       {movies?.map((movie) => (
-        <Movie movie={movie} key={movie.id} />
+        <Movie movie={movie} key={movie.imdbID} />
       ))}
     </ul>
   );
@@ -160,15 +162,12 @@ function MovieList({ movies }) {
 function Movie({ movie }) {
   return (
     <li>
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        alt={`${movie.title} poster`}
-      />
-      <h3>{movie.title}</h3>
+      <img src={`${movie.Poster}`} alt={`${movie.Title}`} />
+      <h3>{movie.Title}</h3>
       <div>
         <p>
           <span>🗓</span>
-          <span>{movie.release_date}</span>
+          <span>{movie.Year}</span>
         </p>
       </div>
     </li>
