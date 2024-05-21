@@ -1,5 +1,4 @@
 import { useState } from "react";
-const key = "a45eb44f";
 
 const tempMovieData = [
   {
