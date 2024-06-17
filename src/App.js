@@ -17,7 +17,7 @@ export default function App() {
         setIsLoading(true);
         const res = await fetch(
           // `https://api.themoviedb.org/3/discover/movie?api_key=${key}&`
-          `http://www.omdbapi.com/?apikey=${key}&s=interstellar`
+          `http://www.omdbapi.com/?apikey=${key}&s=planet of Apes`
         );
 
         if (!res.ok) {
