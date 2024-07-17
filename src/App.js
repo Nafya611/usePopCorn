@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
-//const key = "e8e1da1c5dc8da38bbec8ad3feac87ce"; tmdb key
-const key = "2713f0c1";
+import config from "./config.js";
+
+var key = config.apiKey;
+
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
